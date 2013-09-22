@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 class Currency(models.Model):
     name = models.CharField(max_length=64)
@@ -14,6 +15,13 @@ class ExchangeRate(models.Model):
     date = models.DateField()
     rate = models.FloatField()
     multiplied_by = models.IntegerField()
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.currency.code + str(self.date))
+
+        super(ExchangeRate, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return str(self.currency) + ":" + str(self.rate) + "/" +\
