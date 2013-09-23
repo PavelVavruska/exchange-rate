@@ -15,7 +15,7 @@ class ExchangeRate(models.Model):
     date = models.DateField()
     rate = models.FloatField()
     multiplied_by = models.IntegerField()
-    slug = models.SlugField()
+    slug = models.SlugField(editable=False)
 
     def save(self, *args, **kwargs):
         if not self.id:
