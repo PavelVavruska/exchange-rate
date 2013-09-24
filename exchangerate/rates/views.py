@@ -1,7 +1,6 @@
 from django.views import generic
-from django.shortcuts import get_object_or_404
+from .models import ExchangeRate
 
-from rates.models import Currency, ExchangeRate
 
 class IndexView(generic.ListView):
     template_name = 'rates/index.html'

@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
+
 class Currency(models.Model):
     name = models.CharField(max_length=64)
     country = models.CharField(max_length=64)
