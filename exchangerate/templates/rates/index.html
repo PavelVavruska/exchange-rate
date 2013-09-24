@@ -1,7 +1,7 @@
 {% if latest_rates_list %}
     <ul>
     {% for rate in latest_rates_list %}
-        <li><a href="{% url 'rates:detail1' rate.date|date:'Y' rate.date|date:'m' rate.date|date:'d' rate.slug %}">{{ rate.date }}</a></li>
+        <li><a href="{% url 'rates:detail' rate.date|date:'Y' rate.date|date:'m' rate.date|date:'d' rate.slug %}">{{ rate.date }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
