@@ -21,7 +21,7 @@ class LoadingTest(TestCase):
                        {'code': 'CNY', 'date': '27.09.2013', 'rate': '3,102', 'multiplied_by': '1'},
                        {'code': 'DKK', 'date': '27.09.2013', 'rate': '3,445', 'multiplied_by': '1'},
                        {'code': 'EUR', 'date': '27.09.2013', 'rate': '25,690', 'multiplied_by': '1'},
-                       {'code': 'PHP', 'date': '27.09.2013', 'rate': '43,744', 'multiplied_by': '100'}, ]
+                       {'code': 'PHP', 'date': '27.09.2013', 'rate': '43,744', 'multiplied_by': '100'}]
         data = get_exchange_rates(raw_data)
         self.assertEqual(output_data, data)
 
@@ -42,6 +42,6 @@ class LoadingTest(TestCase):
                        {'name': 'renminbi', 'country': 'Čína', 'code': 'CNY'},
                        {'name': 'koruna', 'country': 'Dánsko', 'code': 'DKK'},
                        {'name': 'euro', 'country': 'EMU', 'code': 'EUR'},
-                       {'name': 'peso', 'country': 'Filipíny', 'code': 'PHP'}, ]
+                       {'name': 'peso', 'country': 'Filipíny', 'code': 'PHP'}]
         data = get_currencies(raw_data)
         self.assertEqual(output_data, data)

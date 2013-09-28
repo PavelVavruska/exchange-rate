@@ -19,7 +19,7 @@ def get_currencies(raw_data):
     content = raw_data.splitlines()
     for line_of_text in content:
         line_number += 1
-        # FIND NEEDED HTML ROW
+        # FIND NEEDED ROW
         if line_number > 2:
             line_array = dedent(line_of_text).split('|')
             actual_currency = {'name': line_array[1], 'country': line_array[0], 'code': line_array[3]}
@@ -29,5 +29,19 @@ def get_currencies(raw_data):
 
 def get_exchange_rates(raw_data):
     """Returns exchange rates for currencies in a particular date."""
-    data = ['', '', '']
-    return data
+    line_number = 0
+    data_array = []
+    content = raw_data.splitlines()
+    for line_of_text in content:
+        line_number += 1
+        if line_number == 1:  # row with currency info
+            currency_info = dedent(line_of_text).split(' ')
+            currency_date = currency_info[0]
+        if line_number > 2:  # rows with currencies
+            line_array = dedent(line_of_text).split('|')
+            actual_currency = {'code': line_array[3],
+                               'date': currency_date,
+                               'rate': line_array[4],
+                               'multiplied_by': line_array[2]}
+            data_array.append(actual_currency)
+    return data_array
