@@ -1,9 +1,16 @@
 # coding=UTF-8
 
 from django.test import TestCase
-
+from datetime import date
 
 class LoadingTest(TestCase):
+    def test_get_url(self):
+        from .utils import get_url
+        cnb_prefix_url = "http://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt"
+        cnb_test_url = "".join([cnb_prefix_url, "?date=11.9.2013"])
+        test_date = date(2013, 9, 11)
+        self.assertEqual(get_url(test_date), cnb_test_url)
+
     def test_parsing_exchange_rates(self):
         from .utils import get_exchange_rates
         raw_data = """27.09.2013 #189

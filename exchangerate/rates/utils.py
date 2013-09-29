@@ -2,8 +2,10 @@ from textwrap import dedent
 
 def get_url(date):
     """Returns full url with correct data format."""
-    url = ""
-    return url
+    cnb_prefix_url = "http://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt?date="
+    url_date="%d.%d.%d" % (date.day, date.month, date.year)
+    output_url = "".join([cnb_prefix_url, url_date])
+    return output_url
 
 
 def get_raw_data(url):
