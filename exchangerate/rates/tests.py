@@ -3,6 +3,22 @@
 from django.test import TestCase
 from datetime import date
 
+from django.test.client import Client
+
+
+class SimpleTest(TestCase):
+    def setUp(self):
+        # Set up Client
+        self.client = Client()
+
+    def test_rates_index(self):
+        # GET request of Rates index page
+        response = self.client.get('/rates/')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+
+
 class LoadingTest(TestCase):
     def test_get_url(self):
         from .utils import get_url
