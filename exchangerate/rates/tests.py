@@ -6,7 +6,7 @@ from datetime import date
 from django.test.client import Client
 
 
-class SimpleTest(TestCase):
+class PageTest(TestCase):
     def setUp(self):
         # Set up Client
         self.client = Client()
